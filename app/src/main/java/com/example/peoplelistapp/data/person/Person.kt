@@ -8,3 +8,8 @@ data class Person(
     @PrimaryKey (autoGenerate = true) val id: Int = 0,
                   val name: String,
                   val age: Int)
+{
+    override fun toString(): String {
+        return "id: $id $name $age"
+    }
+}

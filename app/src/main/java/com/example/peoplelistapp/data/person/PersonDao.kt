@@ -6,6 +6,7 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.example.peoplelistapp.data.person.Person
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface PersonDao {
@@ -20,5 +21,5 @@ interface PersonDao {
     suspend fun delete(person: Person)
 
     @Query ("SELECT * FROM person")
-    fun getAll() : List<Person>
+    fun getAll() : Flow<List<Person>>
 }
