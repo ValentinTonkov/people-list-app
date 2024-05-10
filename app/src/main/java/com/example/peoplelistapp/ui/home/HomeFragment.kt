@@ -1,5 +1,6 @@
 package com.example.peoplelistapp.ui.home
 
+import android.os.Build.VERSION
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,10 +10,12 @@ import androidx.activity.viewModels
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.peoplelistapp.data.DataApplication
 import com.example.peoplelistapp.data.person.Person
 import com.example.peoplelistapp.data.person.PersonViewModel
 import com.example.peoplelistapp.data.person.PersonViewModelFactory
+import com.example.peoplelistapp.data.person.recyclerview.PersonAdapter
 import com.example.peoplelistapp.databinding.FragmentHomeBinding
 import java.lang.StringBuilder
 
@@ -36,10 +39,6 @@ class HomeFragment : Fragment() {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textHome
-        homeViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
-        }
         return root
     }
 
@@ -50,14 +49,16 @@ class HomeFragment : Fragment() {
         }
 
         //adding new record
-        //dataViewModel.insert(Person(name = "Ivan", age = 22))
+        dataViewModel.insert(Person(name = "Ivan", age = 22))
+        dataViewModel.insert(Person(name = "Stoyan", age = 24))
+
+
+        val layoutManager = LinearLayoutManager(context)
+        layoutManager.orientation = LinearLayoutManager.VERTICAL
+        binding.personRecyclerView.layoutManager = layoutManager
 
         dataViewModel.allPeople.observe(viewLifecycleOwner){
-            val builder = StringBuilder()
-            it.forEach {
-                builder.append(it).append('\n')
-            }
-            binding.textHome.text = builder.toString()
+            binding.personRecyclerView.adapter = PersonAdapter(it)
         }
 
     }
