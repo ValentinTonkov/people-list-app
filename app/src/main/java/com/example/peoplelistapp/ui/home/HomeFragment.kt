@@ -16,6 +16,7 @@ import com.example.peoplelistapp.data.person.Person
 import com.example.peoplelistapp.data.person.PersonViewModel
 import com.example.peoplelistapp.data.person.PersonViewModelFactory
 import com.example.peoplelistapp.data.person.recyclerview.PersonAdapter
+import com.example.peoplelistapp.data.person.recyclerview.PersonListAdapter
 import com.example.peoplelistapp.databinding.FragmentHomeBinding
 import java.lang.StringBuilder
 
@@ -33,9 +34,6 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
 
-        val homeViewModel =
-            ViewModelProvider(this).get(HomeViewModel::class.java)
-
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
@@ -52,15 +50,20 @@ class HomeFragment : Fragment() {
         dataViewModel.insert(Person(name = "Ivan", age = 22))
         dataViewModel.insert(Person(name = "Stoyan", age = 24))
 
-
         val layoutManager = LinearLayoutManager(context)
         layoutManager.orientation = LinearLayoutManager.VERTICAL
         binding.personRecyclerView.layoutManager = layoutManager
 
-        dataViewModel.allPeople.observe(viewLifecycleOwner){
-            binding.personRecyclerView.adapter = PersonAdapter(it)
-        }
+        val personListAdapter = PersonListAdapter()
+        binding.personRecyclerView.adapter = personListAdapter
 
+        dataViewModel.allPeople.observe(viewLifecycleOwner){
+            // using PersonAdapter
+            // binding.personRecyclerView.adapter = PersonAdapter(it)
+
+            // using PersonListAdapter
+            (binding.personRecyclerView.adapter as? PersonListAdapter)?.submitList(it)
+        }
     }
 
     override fun onDestroyView() {
