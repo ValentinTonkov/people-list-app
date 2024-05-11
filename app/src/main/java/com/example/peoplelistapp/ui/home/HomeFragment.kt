@@ -15,8 +15,8 @@ import com.example.peoplelistapp.data.DataApplication
 import com.example.peoplelistapp.data.person.Person
 import com.example.peoplelistapp.data.person.PersonViewModel
 import com.example.peoplelistapp.data.person.PersonViewModelFactory
-import com.example.peoplelistapp.data.person.recyclerview.PersonAdapter
-import com.example.peoplelistapp.data.person.recyclerview.PersonListAdapter
+import com.example.peoplelistapp.ui.person.recyclerview.PersonAdapter
+import com.example.peoplelistapp.ui.person.recyclerview.PersonListAdapter
 import com.example.peoplelistapp.databinding.FragmentHomeBinding
 import java.lang.StringBuilder
 
@@ -62,8 +62,12 @@ class HomeFragment : Fragment() {
             // binding.personRecyclerView.adapter = PersonAdapter(it)
 
             // using PersonListAdapter
-            (binding.personRecyclerView.adapter as? PersonListAdapter)?.submitList(it)
+            personListAdapter.submitList(it)
+            // this also works
+            //(binding.personRecyclerView.adapter as? PersonListAdapter)?.submitList(it)
+
         }
+
     }
 
     override fun onDestroyView() {

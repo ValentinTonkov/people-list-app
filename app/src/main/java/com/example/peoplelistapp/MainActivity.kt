@@ -53,7 +53,7 @@ class MainActivity : AppCompatActivity() {
                 }
                 .setAnchorView(R.id.fab).show()
 
-            navController.navigate(R.id.nav_gallery)
+            navController.navigate(R.id.nav_new_person)
         }
 
     }

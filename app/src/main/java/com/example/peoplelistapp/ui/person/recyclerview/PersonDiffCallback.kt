@@ -1,4 +1,4 @@
-package com.example.peoplelistapp.data.person.recyclerview
+package com.example.peoplelistapp.ui.person.recyclerview
 
 import androidx.recyclerview.widget.DiffUtil
 import com.example.peoplelistapp.data.person.Person
