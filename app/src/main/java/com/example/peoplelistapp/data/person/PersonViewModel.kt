@@ -1,10 +1,12 @@
 package com.example.peoplelistapp.data.person
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
 import java.lang.IllegalArgumentException
 
@@ -17,6 +19,10 @@ class PersonViewModel(private val repository: PersonRepository) : ViewModel() {
            repository.insert(person)
         }
     }
+
+    fun getPersonById(id: Int) : LiveData<Person> = repository.getById(id)
+
+
 }
 
 @Suppress("UNCHECKED_CAST")

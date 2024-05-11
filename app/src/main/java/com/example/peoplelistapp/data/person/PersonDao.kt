@@ -22,4 +22,7 @@ interface PersonDao {
 
     @Query ("SELECT * FROM person")
     fun getAll() : Flow<List<Person>>
+
+    @Query ("SELECT * FROM person WHERE id = :id")
+    fun getById(id: Int) : Flow<Person>
 }
