@@ -49,6 +49,18 @@ dependencies {
     implementation(libs.androidx.fragment.ktx)
 
     implementation(libs.androidx.room.runtime)
+/*
+    implementation(files("/home/valentin/Downloads/retrofit-2.11.0.jar"))
+    implementation(platform(libs.okhttp.bom))
+*/
+    // define any required OkHttp artifacts without version
+   /*implementation("com.squareup.okhttp3:okhttp")
+    implementation("com.squareup.okhttp3:logging-interceptor")*/
+   // implementation (libs.converter.gson)
+
+    implementation ("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
+
     annotationProcessor(libs.androidx.room.compiler)
     ksp(libs.androidx.room.compiler)
     implementation(libs.androidx.room.ktx)

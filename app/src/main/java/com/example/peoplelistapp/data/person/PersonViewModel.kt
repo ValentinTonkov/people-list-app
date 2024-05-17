@@ -22,7 +22,6 @@ class PersonViewModel(private val repository: PersonRepository) : ViewModel() {
 
     fun getPersonById(id: Int) : LiveData<Person> = repository.getById(id)
 
-
 }
 
 @Suppress("UNCHECKED_CAST")

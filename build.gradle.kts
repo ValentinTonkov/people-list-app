@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.ir.backend.js.compile
+
 buildscript {
     repositories {
         google()
@@ -6,7 +8,6 @@ buildscript {
         classpath(libs.androidx.navigation.safe.args.gradle.plugin)
     }
 }
-
 
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 plugins {

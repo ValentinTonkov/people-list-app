@@ -18,8 +18,10 @@ class PersonListAdapter : ListAdapter<Person, PersonViewHolder>(PersonDiffCallba
     }
 
     override fun onBindViewHolder(holder: PersonViewHolder, position: Int) {
+        
         holder.personNameText.text = currentList[position].name
         holder.personAgeText.text = currentList[position].age.toString()
+        holder.personIdText.text = currentList[position].id.toString()
 
         holder.itemView.setOnClickListener {
             val navController = Navigation.findNavController(it)
